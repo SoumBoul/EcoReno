@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="EcoReno.csproj" />
+  <Project Path="EcoReno.Tests/EcoReno.Tests.csproj" />
+</Solution>
