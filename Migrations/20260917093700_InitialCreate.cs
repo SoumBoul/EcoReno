@@ -13,7 +13,7 @@ namespace EcoReno.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Projects",
+                name: "Demandes",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -27,16 +27,16 @@ namespace EcoReno.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Projects", x => x.Id);
+                    table.PrimaryKey("PK_Demandes", x => x.Id);
                 });
 
             migrationBuilder.InsertData(
-                table: "Projects",
+                table: "Demandes",
                 columns: new[] { "Id", "Budget", "Description", "Impact", "Name", "Owner", "Status" },
                 values: new object[,]
                 {
-                    { 1, 8500m, "Modernisation d'une cuisine éco-responsable", "Faible émission", "Rénovation cuisine", "Claire", "InProgress" },
-                    { 2, 12000m, "Amélioration thermique d'un logement", "Économie d'énergie", "Isolation toiture", "Julien", "Planned" }
+                    { 1, 8500m, "Modernisation d'une cuisine éco-responsable", "Faible émission", "Rénovation cuisine", "Claire", "EnQualification" },
+                    { 2, 12000m, "Amélioration thermique d'un logement", "Économie d'énergie", "Isolation toiture", "Julien", "Planifiee" }
                 });
         }
 
@@ -44,7 +44,7 @@ namespace EcoReno.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Projects");
+                name: "Demandes");
         }
     }
 }

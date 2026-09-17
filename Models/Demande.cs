@@ -2,11 +2,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace EcoReno.Models;
 
-public class Project
+public class Demande
 {
     public int Id { get; set; }
 
-    [Required(ErrorMessage = "Le nom du projet est obligatoire")]
+    [Required(ErrorMessage = "Le nom de la demande est obligatoire")]
     public string Name { get; set; } = string.Empty;
 
     [Required(ErrorMessage = "Le nom du client est obligatoire")]
@@ -20,5 +20,5 @@ public class Project
     [Required(ErrorMessage = "L'impact estimé est obligatoire")]
     public string Impact { get; set; } = "Impact estimé à calculer";
 
-    public ProjectStatus Status { get; set; } = ProjectStatus.Planned;
+    public DemandeStatus Status { get; set; } = DemandeStatus.Recue;
 }

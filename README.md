@@ -1,6 +1,6 @@
 # EcoReno
 
-Application de gestion de projets de rénovation écologique : API REST (ASP.NET Core) et interface web simple pour suivre les projets d'un client (nom, budget, description, impact estimé, statut).
+Application de gestion de demandes de rénovation écologique : API REST (ASP.NET Core) et interface web simple pour suivre les demandes d'un client (nom, budget, description, impact estimé, statut).
 
 ## Prérequis
 
@@ -19,7 +19,7 @@ dotnet ef database update
 dotnet run
 ```
 
-L'application est disponible sur http://localhost:5110/ et l'API sur http://localhost:5110/api/projects.
+L'application est disponible sur http://localhost:5110/ et l'API sur http://localhost:5110/api/demandes.
 
 ## Tests
 
@@ -34,7 +34,7 @@ dotnet test
 
 ## Structure du projet
 
-- `Models/` : modèles (`Project`, `ProjectStatus`)
+- `Models/` : modèles (`Demande`, `DemandeStatus`)
 - `Data/` : `AppDbContext` (EF Core)
 - `Controllers/` : contrôleurs REST
 - `Migrations/` : migrations EF Core
@@ -45,10 +45,10 @@ dotnet test
 
 | Méthode | Endpoint | Description |
 | --- | --- | --- |
-| GET | `/api/projects` | Liste des projets |
-| POST | `/api/projects` | Création d'un projet |
-| GET | `/api/projects/{id}` | Détail d'un projet |
-| PUT | `/api/projects/{id}` | Mise à jour d'un projet |
+| GET | `/api/demandes` | Liste des demandes |
+| POST | `/api/demandes` | Création d'une demande |
+| GET | `/api/demandes/{id}` | Détail d'une demande |
+| PUT | `/api/demandes/{id}` | Mise à jour d'une demande |
 
 ## Licence
 

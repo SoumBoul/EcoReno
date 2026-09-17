@@ -52,9 +52,9 @@ Avant de coder, interroge l'étudiant :
 
 ## Architecture du projet
 
-- `Models/` : `Project` et l'enum `ProjectStatus`
+- `Models/` : `Demande` et l'enum `DemandeStatus`
 - `Data/AppDbContext.cs` : configuration EF Core (SQLite) et données de seed
-- `Controllers/ProjectsController.cs` : endpoints REST (GET/POST/PUT)
+- `Controllers/DemandesController.cs` : endpoints REST (GET/POST/PUT)
 - `Migrations/` : migrations EF Core (schéma + seed)
 - `wwwroot/index.html` : interface web simple consommant l'API
 - `EcoReno.Tests/` : tests d'intégration (`xUnit` + `WebApplicationFactory`)

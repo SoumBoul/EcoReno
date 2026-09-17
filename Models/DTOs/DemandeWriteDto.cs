@@ -3,14 +3,14 @@ using System.ComponentModel.DataAnnotations;
 namespace EcoReno.Models.Dtos;
 
 /// <summary>
-/// Contrat d'entrée pour la création et la mise à jour d'un projet.
+/// Contrat d'entrée pour la création et la mise à jour d'une demande.
 /// Volontairement dépourvu de propriété <c>Id</c> : empêche l'over-posting
 /// et l'injection de clé primaire (mass assignment).
 /// </summary>
-public class ProjectWriteDto
+public class DemandeWriteDto
 {
-    [Required(ErrorMessage = "Le nom du projet est obligatoire")]
-    [StringLength(120, MinimumLength = 3, ErrorMessage = "Le nom du projet doit contenir entre 3 et 120 caractères")]
+    [Required(ErrorMessage = "Le nom de la demande est obligatoire")]
+    [StringLength(120, MinimumLength = 3, ErrorMessage = "Le nom de la demande doit contenir entre 3 et 120 caractères")]
     public string Name { get; set; } = string.Empty;
 
     [Required(ErrorMessage = "Le nom du client est obligatoire")]
@@ -27,6 +27,6 @@ public class ProjectWriteDto
     [StringLength(300, ErrorMessage = "L'impact estimé ne peut pas dépasser 300 caractères")]
     public string Impact { get; set; } = string.Empty;
 
-    [EnumDataType(typeof(ProjectStatus), ErrorMessage = "Statut de projet invalide")]
-    public ProjectStatus Status { get; set; } = ProjectStatus.Planned;
+    [EnumDataType(typeof(DemandeStatus), ErrorMessage = "Statut de demande invalide")]
+    public DemandeStatus Status { get; set; } = DemandeStatus.Recue;
 }

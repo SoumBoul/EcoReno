@@ -16,7 +16,7 @@ namespace EcoReno.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.12");
 
-            modelBuilder.Entity("EcoReno.Models.Project", b =>
+            modelBuilder.Entity("EcoReno.Models.Demande", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -46,7 +46,7 @@ namespace EcoReno.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Projects");
+                    b.ToTable("Demandes");
 
                     b.HasData(
                         new
@@ -57,7 +57,7 @@ namespace EcoReno.Migrations
                             Impact = "Faible émission",
                             Name = "Rénovation cuisine",
                             Owner = "Claire",
-                            Status = "InProgress"
+                            Status = "EnQualification"
                         },
                         new
                         {
@@ -67,7 +67,7 @@ namespace EcoReno.Migrations
                             Impact = "Économie d'énergie",
                             Name = "Isolation toiture",
                             Owner = "Julien",
-                            Status = "Planned"
+                            Status = "Planifiee"
                         });
                 });
 #pragma warning restore 612, 618
