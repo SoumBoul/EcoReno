@@ -53,5 +53,46 @@ public class ProjectsApiTests : IClassFixture<EcoRenoWebApplicationFactory>
 
         Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
     }
+
+    [Fact]
+    public async Task ShouldIgnoreClientSuppliedIdOnCreate()
+    {
+        // Tentative de mass assignment : "id" collisionne avec une ligne du seed.
+        var payload = new
+        {
+            id = 1,
+            name = "Chaudière thermique",
+            owner = "Nadia",
+            budget = 4200,
+            description = "Remplacement",
+            impact = "Bon",
+            status = "Planned",
+        };
+
+        var response = await _client.PostAsJsonAsync("/api/projects", payload);
+
+        Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+        var created = await response.Content.ReadFromJsonAsync<JsonElement>();
+        var id = created.GetProperty("id").GetInt32();
+        Assert.NotEqual(1, id);
+        Assert.NotEqual(2, id);
+    }
+
+    [Fact]
+    public async Task ShouldRejectInvalidPayload()
+    {
+        var payload = new
+        {
+            name = "",
+            owner = "X",
+            budget = 0,
+            impact = "",
+            status = "Planned",
+        };
+
+        var response = await _client.PostAsJsonAsync("/api/projects", payload);
+
+        Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+    }
 }
 

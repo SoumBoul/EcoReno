@@ -1,4 +1,13 @@
 bin/
 obj/
-*.db
 .vs/
+
+# Base SQLite + fichiers WAL/SHM (les pages du WAL contiennent de vraies données)
+*.db
+*.db-shm
+*.db-wal
+
+# Stockages de secrets locaux — ne jamais les commiter
+appsettings.*.local.json
+secrets.json
+.env

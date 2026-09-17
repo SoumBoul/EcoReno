@@ -1,5 +1,6 @@
 using EcoReno.Data;
 using EcoReno.Models;
+using EcoReno.Models.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -34,15 +35,25 @@ public class ProjectsController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<Project>> CreateProject(Project project)
+    public async Task<ActionResult<Project>> CreateProject(ProjectWriteDto dto)
     {
+        var project = new Project
+        {
+            Name = dto.Name,
+            Owner = dto.Owner,
+            Budget = dto.Budget,
+            Description = dto.Description,
+            Impact = dto.Impact,
+            Status = dto.Status,
+        };
+
         _context.Projects.Add(project);
         await _context.SaveChangesAsync();
         return CreatedAtAction(nameof(GetProject), new { id = project.Id }, project);
     }
 
     [HttpPut("{id}")]
-    public async Task<ActionResult<Project>> UpdateProject(int id, Project updatedProject)
+    public async Task<ActionResult<Project>> UpdateProject(int id, ProjectWriteDto dto)
     {
         var project = await _context.Projects.FindAsync(id);
         if (project is null)
@@ -50,12 +61,12 @@ public class ProjectsController : ControllerBase
             return NotFound(new { error = $"Projet introuvable avec l'id {id}" });
         }
 
-        project.Name = updatedProject.Name;
-        project.Owner = updatedProject.Owner;
-        project.Budget = updatedProject.Budget;
-        project.Description = updatedProject.Description;
-        project.Impact = updatedProject.Impact;
-        project.Status = updatedProject.Status;
+        project.Name = dto.Name;
+        project.Owner = dto.Owner;
+        project.Budget = dto.Budget;
+        project.Description = dto.Description;
+        project.Impact = dto.Impact;
+        project.Status = dto.Status;
 
         await _context.SaveChangesAsync();
         return project;

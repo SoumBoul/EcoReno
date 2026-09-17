@@ -17,6 +17,7 @@ public class Project
 
     public string? Description { get; set; }
 
+    [Required(ErrorMessage = "L'impact estimé est obligatoire")]
     public string Impact { get; set; } = "Impact estimé à calculer";
 
     public ProjectStatus Status { get; set; } = ProjectStatus.Planned;

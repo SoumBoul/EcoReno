@@ -137,13 +137,29 @@
         projects.forEach((project) => {
           const item = document.createElement('article');
           item.className = 'project-item';
-          item.innerHTML = `
-            <h3>${project.name}</h3>
-            <p class="muted">Client : ${project.owner}</p>
-            <p>Budget : ${project.budget} €</p>
-            <p>Description : ${project.description || 'À compléter'}</p>
-            <p>Statut : ${project.status || 'Planned'}</p>
-          `;
+
+          // Construction du DOM via textContent : neutralise toute injection de balises
+          // (XSS stocké) provenant des champs saisis par l'utilisateur.
+          const title = document.createElement('h3');
+          title.textContent = project.name ?? '';
+          item.appendChild(title);
+
+          const rows = [
+            { text: `Client : ${project.owner ?? ''}`, muted: true },
+            { text: `Budget : ${project.budget ?? 0} €`, muted: false },
+            { text: `Description : ${project.description || 'À compléter'}`, muted: false },
+            { text: `Statut : ${project.status || 'Planned'}`, muted: false },
+          ];
+
+          rows.forEach(({ text, muted }) => {
+            const paragraph = document.createElement('p');
+            if (muted) {
+              paragraph.className = 'muted';
+            }
+            paragraph.textContent = text;
+            item.appendChild(paragraph);
+          });
+
           list.appendChild(item);
         });
       }
