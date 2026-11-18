@@ -1,0 +1,140 @@
+﻿
+
+/*
+Les styles sont regroupés dans ce fichier pour faciliter
+leur maintenance et les partager entre plusieurs pages.
+*/
+ 
+
+body {
+    
+
+    color-scheme: light;
+    --bg: #f4f8f5;
+    --panel: #ffffff;
+    --text: #163126;
+    --muted: #5f7a6d;
+    --accent: #2f7d5b;
+    --accent-dark: #215c43;
+    --border: #dbe8e0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+.page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+header {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 8px 24px rgba(22,49,38,0.06);
+}
+
+h1 {
+    margin: 0 0 8px;
+}
+
+p {
+    margin: 0;
+    color: var(--muted);
+}
+
+.grid {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: 1.1fr 0.9fr;
+    margin-top: 24px;
+}
+
+.card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+}
+
+form {
+    display: grid;
+    gap: 12px;
+}
+
+label {
+    font-weight: 600;
+}
+
+input, select, textarea, button {
+    width: 100%;
+    font: inherit;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+}
+
+button {
+    background: var(--accent);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+    button:hover {
+        background: var(--accent-dark);
+    }
+
+.demande-list {
+    display: grid;
+    gap: 12px;
+}
+
+.demande-item {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px;
+    background: #fbfdfb;
+}
+
+.muted {
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.form-error {
+    color: #b3261e;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.form-success {
+    color: var(--accent-dark);
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+@media(max-width: 760px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .page {
+        padding: 16px;
+    }
+
+                                                    
+}
+
